@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} ENCYCLOPEDIA
+CATELOGUE {% block body %}
+<div style="padding-left: 10%; padding-top: 5%">
+  <h1>ENCYCLOPEDIA CATELOGUE</h1>
+  <ul>
+    {% for entry in entries %}
+    <a href="{% url 'entry' entry %}">
+      <li>{{ entry }}</li>
+    </a>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %} {% endblock %}

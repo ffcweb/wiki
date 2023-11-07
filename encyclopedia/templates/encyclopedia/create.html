@@ -1,0 +1,36 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} Create A New Page
+{%endblock %} {% block body %}
+<h1 style="padding-left: 10%; padding-top: 5%">Create A New Page</h1>
+<form action="{% url 'create' %}" method="POST">
+  {% csrf_token %}
+
+  <div class="form-group" style="padding-left: 10%">
+    <label for="title">Enter the title you want to donate to</label>
+    <input
+      style="height: 55px; width: 800px"
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      placeholder="Title"
+    />
+  </div>
+  <div class="form-group" style="padding-left: 10%">
+    <label for="content">Wite the content you want to donate to</label>
+    <textarea
+      style="height: 700px; width: 800px"
+      class="form-control"
+      id="content_entry"
+      name="content_entry"
+      placeholder="Read through GitHub’s Markdown guide to get an understanding for how Markdown’s syntax works. Pay attention in particular to what Markdown syntax looks like for headings, bold text, links, and lists. "
+    ></textarea>
+  </div>
+  <input
+    type="submit"
+    value="Save"
+    class="btn btn-primary"
+    style="margin-left: 10%"
+  />
+</form>
+
+{% endblock %}

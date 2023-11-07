@@ -1,0 +1,32 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} Edit {{ title }} {%
+endblock %} {% block body %}
+<h1>Edit {{ title }}</h1>
+<div>
+  {% if message %}
+  <div class="alert alert-danger" role="alert">{{ message }}</div>
+  {% endif %}
+  <form method="GET">
+    {% csrf_token %}
+    <div class="form">
+      <div>
+        <label for="content">Content</label>
+        <textarea
+          style="height: 700px; width: 800px"
+          class="form-control"
+          id="content_entry"
+          name="content_entry"
+          placeholder="Write page content in markdown"
+        >
+        {% if content_entry %}{{ content_entry }}{% endif %}</textarea
+        >
+      </div>
+      <input
+        style="padding: 10px; font-size: 1.5rem"
+        type="submit"
+        value="Save"
+        class="btn btn-success"
+      />
+    </div>
+  </form>
+</div>
+{% endblock %} {% endblock %}

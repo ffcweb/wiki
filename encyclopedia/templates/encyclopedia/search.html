@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} SEARCHING RESULTS {%
+endblock %} {% block body %}
+<div style="padding-left: 10%; padding-top: 5%">
+  <h1>SEARCHING RESULTS</h1>
+  <ul>
+    {% for entry in entries %}
+    <a href="{% url 'entry' entry %}">
+      <li>{{ entry }}</li>
+    </a>
+    {% empty %}
+    <h2 style="margin: 5%; color: red">
+      We are tirrebly sorry! The page hasn't been created! You can create it if
+      you wish.
+      <br />
+      <img
+        src="https://v5.airtableusercontent.com/v2/22/22/1699344000000/MCPi0mLpr27uCEISRI7IIg/pZVtVelxv0tmYe9MBLtmeCaSEMHRaraEvm4iXuSx4es4hcpv0O2hueXEdfalgx87wCQwC69bH9m6eNKdsAm-1R2w0Y8Rs-Pz87ti61KJCFwTFIrihcHlVlEoygkVH7TRe0gSXSp9NW4odI54LPNFhA/QbqeUb8FLUixmIjFaSpuO8AQMr0LyAqHB3VQvQrnUTg"
+        alt="error messages"
+        style="width: 500px; height: 600px"
+      />
+    </h2>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}{% endblock %}

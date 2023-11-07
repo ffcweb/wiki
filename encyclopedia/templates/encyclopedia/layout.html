@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="sidebar col-lg-2 col-md-3">
+        <img
+          src="https://en.wikipedia.org/static/images/icons/wikipedia.png"
+          alt="wikilogo"
+        />
+        <img
+          src="https://en.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-en.svg"
+          alt="wikilogo"
+        />
+        <h2 style="text-align: center"></h2>
+        <form action="{% url 'search' %}" method="post">
+          {% csrf_token %}
+          <input
+            style="margin: 5%; height: 40px; width: 245px"
+            class="search"
+            type="text"
+            name="q"
+            placeholder="Type Title To Search"
+          />
+        </form>
+        <div style="margin: 5%; font-size: 1.3rem">
+          <a href="{% url 'index' %}">Home Page</a>
+        </div>
+        <div style="margin: 5%; font-size: 1.3rem">
+          <a href="{% url 'create' %}">Create A New Page</a>
+        </div>
+        <div style="margin: 5%; font-size: 1.3rem">
+          <a href="{% url 'random' %}">Visit a random page</a>
+        </div>
+        {% block nav %} {% endblock %}
+      </div>
+      <div class="main col-lg-10 col-md-9">{% block body %} {% endblock %}</div>
+    </div>
+  </body>
+</html>
